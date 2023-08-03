@@ -166,7 +166,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("images/banner.gif") no-repeat center;
+    background: url("images/portt.gif") no-repeat center;
     
     height: 100vh;
     color: #fff;
@@ -701,6 +701,13 @@ footer span a:hover{
 
 #msg{
     color: red;
-    margin-top: -20px;
+    margin-top: -5px;
     display: block;
+}
+
+
+#imgs{
+    height: 60%;
+    width: 30%;
+   
 }
