@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -24,14 +24,26 @@
 
 .container {
   display: flex;
- 
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+  position: relative;
+  overflow: visible;
 }
 
 .section {
   flex: 1;
   text-align: center;
- 
+  min-width: 200px;
+  max-width: 300px;
+  height: 150px;
   box-sizing: border-box;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -53,6 +65,7 @@
   border: none;
   border-radius: 15px;
   box-shadow: 0 5px #890000;
+  transition: all 0.3s ease;
 }
 
 .button:hover {background-color: #ff0000}
@@ -74,11 +87,12 @@
 
 .hell{
     background-color: white;
-  width: 90%;
-  border: 15px solid black;
-  padding: 50px;
-  margin: 20px;
-  left: 10%;
+    width: 90%;
+    max-width: 800px;
+    border: 15px solid black;
+    padding: 30px;
+    margin: 20px auto;
+    box-sizing: border-box;
 }
 
 
@@ -87,7 +101,73 @@
     color: #fff;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 30px 0;
+    }
+    
+    .section {
+        min-width: 150px;
+        max-width: 250px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hell {
+        width: 95%;
+        padding: 20px;
+        margin: 30px auto;
+        border: 10px solid black;
+    }
+    
+    .hell h4 {
+        font-size: 16px !important;
+        line-height: 1.4;
+        margin: 10px 0;
+    }
+    
+    .button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
 
+@media (max-width: 480px) {
+    .container {
+        gap: 10px;
+        margin: 20px 0;
+    }
+    
+    .section {
+        min-width: 120px;
+        max-width: 200px;
+        height: 100px;
+    }
+    
+    .hell {
+        width: 98%;
+        padding: 15px;
+        margin: 20px auto;
+        border: 8px solid black;
+    }
+    
+    .hell h4 {
+        font-size: 14px !important;
+        line-height: 1.3;
+        margin: 8px 0;
+    }
+    
+    .button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
 
     </style>
 </head>
@@ -119,7 +199,7 @@
                 <div class="text-1">Hello, my name is</div>
                 <div class="text-2">Navindya Denipitiya</div>
                 <div class="text-3">And I'm a <span class="typing"></span></div>
-                <a href="https://drive.google.com/file/d/1sfv-QWA4dOKe_IC91cwvQfNPUoERjL7m/view?usp=sharing" target="_blank">Download CV</a>
+                <a href="https://drive.google.com/file/d/1uzPViy4t9O5zeXzkRFnsnvCD30FYkwBC/view?usp=sharing" target="_blank">Download CV</a>
             </div>
         </div>
     </section>
@@ -134,13 +214,12 @@
                 </div>
                 <div class="column right">
                     <div class="text">I'm Navindya and I'm a <span class="typing-2"></span></div>
-                    <p>I am Motivated and detail-oriented Software Engineering graduate from the Informatics Institute of Technology,
- affiliated with the University of Westminster UK, with 1 year of hands-on working experience in software
- development. Possesses a solid foundation in programming, software testing, and modern development
- practices. Passionate about leveraging technology to solve real-world problems and committed to continuous
- learning and professional growth. Actively seeking opportunities to contribute to innovative projects within
- collaborative and forward-thinking teams. </p>
-                    <a href="https://github.com/NavindyaD" target="_blank">My GitHub</a>
+                    <p>I am an undergraduate student at the Informatics Institute of
+                        Technology which is connected with the University of Westminster
+                        in the UK and enrolling in a software engineering degree program
+                        in my fourth year. So I am looking for a trainee software engineering position.
+                        </p>
+                    <a href="https://github.com/EveryoneCan" target="_blank">My GitHub</a>
                     <a href="https://www.linkedin.com/in/nicolle-denipitiya-43b4a9231/" target="_blank">My LinkedIn</a>
                 </div>
             </div>
@@ -355,7 +434,7 @@
                             <i class="fas fa-envelope"></i>
                             <div class="info">
                                 <div class="head">Email</div>
-                                <div class="sub-title">navindyadenipitiya@gmail.com</div>
+                                <div class="sub-title">nicolle.20210113@iit.ac.lk</div>
                             </div>
                         </div>
                     </div>
