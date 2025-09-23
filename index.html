@@ -707,6 +707,42 @@
             margin: 20px 0;
             border-radius: 8px;
         }
+        
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .scroll-to-top:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -742,7 +778,7 @@
                 <div class="hero-buttons">
                     <a href="#projects" class="btn">View My Work</a>
                     <a href="#contact" class="btn">Contact Me</a>
-                    <a href="#" class="btn btn-outline" onclick="downloadResume()">Download Resume</a>
+                    <a href="https://drive.google.com/file/d/11zWxNkzuXskA_2VKkX37-JXWXp0Gx-L-/view?usp=sharing" target="_blank" class="btn">Download CV</a>
                 </div>
             </div>
         </div>
@@ -1193,6 +1229,11 @@
         </div>
     </footer>
 
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
@@ -1236,51 +1277,30 @@
                 });
             }
             
+            // Scroll to top button functionality
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            function toggleScrollToTop() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            }
+            
             window.addEventListener('scroll', checkScroll);
+            window.addEventListener('scroll', toggleScrollToTop);
             checkScroll(); // Check initial state
         });
         
-        // Resume download function
-        function downloadResume() {
-            // Create a simple resume content (you can replace this with actual resume content)
-            const resumeContent = `
-Navindya Denipitiya
-Software Engineer
-
-PROFESSIONAL SUMMARY
-Results-driven Software Engineering graduate with over 1 year of professional experience in full-stack development. Specialized in developing robust backend systems and intuitive frontend experiences.
-
-TECHNICAL SKILLS
-Frontend: HTML, CSS, JavaScript, React.js, Vue.js, PHP
-Backend: Python, Java, Node.js, .NET, Go
-Database: MongoDB, MySQL
-Tools: Git, phpMyAdmin, Figma, Power BI, WordPress
-Frameworks: Spring Boot, Laravel, Flask
-
-EXPERIENCE
-Software Engineer | Aeosys Corp | 2025 - Present
-Software Engineer/Intern | Hologo World, Maldives | Sep 2023 - Sep 2024
-
-EDUCATION
-BEng (Hons) Software Engineering | Informatics Institute of Technology, University of Westminster | 2022-2025
-Foundation Certificate in Higher Education | Informatics Institute of Technology | 2021-2022
-
-CONTACT
-Email: navindyadenipitiya@gmail.com
-Phone: +94 714528805
-Portfolio: https://navindyad.github.io
-            `;
-            
-            const blob = new Blob([resumeContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Navindya_Denipitiya_Resume.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
+        
         
         // Check for success message in URL
         function checkForSuccessMessage() {
