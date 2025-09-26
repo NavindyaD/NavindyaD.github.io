@@ -424,6 +424,103 @@
             gap: 30px;
         }
         
+        /* Projects Carousel */
+        .projects-carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .projects-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 30px;
+        }
+        
+        .projects-carousel .project-card {
+            display: block;
+            opacity: 1;
+            transform: none;
+            transition: all 0.3s ease;
+        }
+        
+        .projects-carousel .project-card.active {
+            opacity: 1;
+            transform: none;
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: none;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        
+        .carousel-btn {
+            background: rgba(37, 99, 235, 0.9);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .carousel-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .carousel-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .prev-btn {
+            margin-left: -25px;
+        }
+        
+        .next-btn {
+            margin-right: -25px;
+        }
+        
+        .carousel-dots {
+            display: none;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        .dot:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
         .project-card {
             background-color: white;
             border-radius: 15px;
@@ -641,6 +738,95 @@
             
             .contact-form div[style*="grid-template-columns"] {
                 grid-template-columns: 1fr !important;
+            }
+            
+            /* Carousel mobile styles */
+            .projects-carousel-container {
+                max-width: 100%;
+                margin: 0 10px;
+                padding: 0 10px;
+            }
+            
+            .projects-carousel {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+            
+            .projects-carousel .project-card {
+                min-width: 100%;
+                flex-shrink: 0;
+                margin: 0;
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.5s ease-in-out;
+                display: none;
+            }
+            
+            .projects-carousel .project-card.active {
+                opacity: 1;
+                transform: translateX(0);
+                display: block;
+                width: 100%;
+            }
+            
+            .carousel-controls {
+                display: none !important;
+            }
+            
+            .carousel-dots {
+                display: flex;
+                margin-top: 20px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+                background: rgba(37, 99, 235, 0.9);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                pointer-events: all;
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+                z-index: 10;
+            }
+            
+            .carousel-btn:hover {
+                background: var(--primary-color);
+                transform: scale(1.1);
+                box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            }
+            
+            .prev-btn {
+                margin-left: 10px;
+            }
+            
+            .next-btn {
+                margin-right: 10px;
+            }
+            
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #e2e8f0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .dot.active {
+                background: var(--primary-color);
+                transform: scale(1.2);
+            }
+            
+            .dot:hover {
+                background: var(--secondary-color);
+                transform: scale(1.1);
             }
         }
         
@@ -975,178 +1161,208 @@
             </div>
             
             <h3 style="margin-top: 40px; text-align: center;">Individual Projects</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-music"></i>
+            <div class="projects-carousel-container">
+                <div class="projects-carousel">
+                    <div class="project-card active">
+                        <div class="project-img">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2024-2025</span>
+                            <h4>Emotion-driven Music Playlist Generator</h4>
+                            <p>AI-powered application that analyzes facial expressions through computer vision to detect user emotions and automatically curates personalized music playlists. Implemented using Python, OpenCV, and machine learning algorithms to provide seamless user experience.</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <span class="project-year">2024-2025</span>
-                        <h4>Emotion-driven Music Playlist Generator</h4>
-                        <p>AI-powered application that analyzes facial expressions through computer vision to detect user emotions and automatically curates personalized music playlists. Implemented using Python, OpenCV, and machine learning algorithms to provide seamless user experience.</p>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2025</span>
+                            <h4>Professional Portfolio Website</h4>
+                            <p>Responsive, modern portfolio website built with semantic HTML5, advanced CSS3 animations, and vanilla JavaScript. Features smooth scrolling, interactive elements, and optimized performance with mobile-first design principles.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>Interactive Web-based Game</h4>
+                            <p>Browser-based platformer game featuring physics-based movement, collision detection, and score tracking. Built with HTML5 Canvas, CSS3 animations, and JavaScript ES6+ for optimal performance and cross-browser compatibility.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>Dynamic User Management System</h4>
+                            <p>Full-stack web application with complete CRUD functionality, featuring secure user authentication, data validation, and real-time updates using PHP, MySQL, and AJAX. Includes responsive design and input sanitization for enhanced security.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>Modern Full-Stack Application (React/Laravel)</h4>
+                            <p>Enterprise-grade web application built with React.js frontend and Laravel REST API backend. Features JWT authentication, state management with Redux, and responsive design. Implements modern development practices including component-based architecture and API integration.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>Healthcare Management System</h4>
+                            <p>Comprehensive appointment scheduling system for healthcare providers built with Java and object-oriented design principles. Features patient management, appointment booking, and automated notifications with clean, maintainable code architecture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>Real-Time Microfinance Platform</h4>
+                            <p>Comprehensive financial management system with real-time transaction processing, loan management, and user dashboard. Built with PHP, MySQL, and JavaScript, featuring secure payment processing, automated calculations, and responsive design for mobile accessibility.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>Real-Time Job Portal Platform</h4>
+                            <p>Dynamic job marketplace with real-time job posting, advanced search functionality, and user matching algorithms. Features employer dashboard, candidate profiles, and automated notifications using PHP, MySQL, and modern web technologies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2022</span>
+                            <h4>Smart Fuel Queue Management System</h4>
+                            <p>Intelligent queue optimization system for fuel stations using Java and data structures. Features real-time queue monitoring, automated scheduling, and user notifications to improve service efficiency and customer satisfaction.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2022</span>
+                            <h4>Academic Grade Management System</h4>
+                            <p>Automated grade calculation and display system built with Python, featuring data validation, statistical analysis, and comprehensive reporting. Implements university grading standards with user-friendly interface and data export capabilities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2022</span>
+                            <h4>Interactive Word Game (Python)</h4>
+                            <p>Feature-rich text-based word guessing game with customizable difficulty levels, score tracking, and user statistics. Built with Python using object-oriented programming principles and includes data persistence for game history.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2025</span>
-                        <h4>Professional Portfolio Website</h4>
-                        <p>Responsive, modern portfolio website built with semantic HTML5, advanced CSS3 animations, and vanilla JavaScript. Features smooth scrolling, interactive elements, and optimized performance with mobile-first design principles.</p>
-                    </div>
+                <!-- Navigation Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" onclick="changeProject(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" onclick="changeProject(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>Interactive Web-based Game</h4>
-                        <p>Browser-based platformer game featuring physics-based movement, collision detection, and score tracking. Built with HTML5 Canvas, CSS3 animations, and JavaScript ES6+ for optimal performance and cross-browser compatibility.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>Dynamic User Management System</h4>
-                        <p>Full-stack web application with complete CRUD functionality, featuring secure user authentication, data validation, and real-time updates using PHP, MySQL, and AJAX. Includes responsive design and input sanitization for enhanced security.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-user-edit"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>Modern Full-Stack Application (React/Laravel)</h4>
-                        <p>Enterprise-grade web application built with React.js frontend and Laravel REST API backend. Features JWT authentication, state management with Redux, and responsive design. Implements modern development practices including component-based architecture and API integration.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>Healthcare Management System</h4>
-                        <p>Comprehensive appointment scheduling system for healthcare providers built with Java and object-oriented design principles. Features patient management, appointment booking, and automated notifications with clean, maintainable code architecture.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>Real-Time Microfinance Platform</h4>
-                        <p>Comprehensive financial management system with real-time transaction processing, loan management, and user dashboard. Built with PHP, MySQL, and JavaScript, featuring secure payment processing, automated calculations, and responsive design for mobile accessibility.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>Real-Time Job Portal Platform</h4>
-                        <p>Dynamic job marketplace with real-time job posting, advanced search functionality, and user matching algorithms. Features employer dashboard, candidate profiles, and automated notifications using PHP, MySQL, and modern web technologies.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-gas-pump"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2022</span>
-                        <h4>Smart Fuel Queue Management System</h4>
-                        <p>Intelligent queue optimization system for fuel stations using Java and data structures. Features real-time queue monitoring, automated scheduling, and user notifications to improve service efficiency and customer satisfaction.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2022</span>
-                        <h4>Academic Grade Management System</h4>
-                        <p>Automated grade calculation and display system built with Python, featuring data validation, statistical analysis, and comprehensive reporting. Implements university grading standards with user-friendly interface and data export capabilities.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2022</span>
-                        <h4>Interactive Word Game (Python)</h4>
-                        <p>Feature-rich text-based word guessing game with customizable difficulty levels, score tracking, and user statistics. Built with Python using object-oriented programming principles and includes data persistence for game history.</p>
-                    </div>
+                <!-- Dots Indicator -->
+                <div class="carousel-dots" id="individual-dots">
+                    <!-- Dots will be generated by JavaScript -->
                 </div>
             </div>
             
             <h3 style="margin-top: 60px; text-align: center;">Group Projects</h3>
-            <div class="projects-grid">
+            <div class="projects-carousel-container">
+                <div class="projects-carousel" id="group-carousel">
+                    <div class="project-card active">
+                        <div class="project-img">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2025-Present</span>
+                            <h4>ClosedWand-AI</h4>
+                            <p>Advanced AI-powered sales automation platform designed to enhance sales representative productivity. Features intelligent lead scoring, automated follow-up systems, and predictive analytics to optimize sales performance and customer engagement.</p>
+                        </div>
+                    </div>
 
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-robot"></i>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023-2024</span>
+                            <h4>Skooler - School Management System</h4>
+                            <p>Comprehensive educational management platform featuring student enrollment, grade tracking, parent communication, and administrative tools. Contributed to full-stack development using modern web technologies and database design principles.</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <span class="project-year">2025-Present</span>
-                        <h4>ClosedWand-AI</h4>
-                        <p>Advanced AI-powered sales automation platform designed to enhance sales representative productivity. Features intelligent lead scoring, automated follow-up systems, and predictive analytics to optimize sales performance and customer engagement.</p>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2023</span>
+                            <h4>AI-Powered Crowd Analytics System</h4>
+                            <p>Advanced computer vision application using Multi-column Convolutional Neural Networks (M-CNN) for accurate crowd density estimation and counting. Integrated with web interface using PHP and Python, providing real-time analytics for event management and safety monitoring.</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023-2024</span>
-                        <h4>Skooler - School Management System</h4>
-                        <p>Comprehensive educational management platform featuring student enrollment, grade tracking, parent communication, and administrative tools. Contributed to full-stack development using modern web technologies and database design principles.</p>
-                    </div>
-                </div>
-                
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2023</span>
-                        <h4>AI-Powered Crowd Analytics System</h4>
-                        <p>Advanced computer vision application using Multi-column Convolutional Neural Networks (M-CNN) for accurate crowd density estimation and counting. Integrated with web interface using PHP and Python, providing real-time analytics for event management and safety monitoring.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-running"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-year">2022</span>
-                        <h4>Dynamic Sports News Portal</h4>
-                        <p>Comprehensive sports news and information website featuring live scores, team statistics, and user engagement features. Built with responsive design using HTML5, CSS3, and JavaScript with modern web development practices and mobile optimization.</p>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-year">2022</span>
+                            <h4>Dynamic Sports News Portal</h4>
+                            <p>Comprehensive sports news and information website featuring live scores, team statistics, and user engagement features. Built with responsive design using HTML5, CSS3, and JavaScript with modern web development practices and mobile optimization.</p>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Navigation Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" onclick="changeGroupProject(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" onclick="changeGroupProject(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
                 
+                <!-- Dots Indicator -->
+                <div class="carousel-dots" id="group-dots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
             </div>
         </div>
     </section>
@@ -1362,6 +1578,312 @@
                     alert('Sorry, there was an error sending your message. Please try again.');
                     console.error('EmailJS error:', error);
                 });
+        });
+        
+        // Carousel functionality
+        let currentIndividualProject = 0;
+        let currentGroupProject = 0;
+        
+        // Initialize carousels
+        function initializeCarousels() {
+            // Individual projects carousel
+            const individualCarousel = document.querySelector('.projects-carousel:not(#group-carousel)');
+            const individualProjects = individualCarousel ? individualCarousel.querySelectorAll('.project-card') : [];
+            const individualDots = document.getElementById('individual-dots');
+            
+            // Group projects carousel
+            const groupCarousel = document.getElementById('group-carousel');
+            const groupProjects = groupCarousel ? groupCarousel.querySelectorAll('.project-card') : [];
+            const groupDots = document.getElementById('group-dots');
+            
+            // Create dots for individual projects
+            if (individualProjects.length > 0 && individualDots) {
+                individualDots.innerHTML = ''; // Clear existing dots
+                individualProjects.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToIndividualProject(index));
+                    individualDots.appendChild(dot);
+                });
+                
+                // Show first project
+                showIndividualProject(0);
+            }
+            
+            // Create dots for group projects
+            if (groupProjects.length > 0 && groupDots) {
+                groupDots.innerHTML = ''; // Clear existing dots
+                groupProjects.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToGroupProject(index));
+                    groupDots.appendChild(dot);
+                });
+                
+                // Show first project
+                showGroupProject(0);
+            }
+        }
+        
+        // Individual projects navigation
+        function changeProject(direction) {
+            const individualCarousel = document.querySelector('.projects-carousel:not(#group-carousel)');
+            if (!individualCarousel) return;
+            
+            const projects = individualCarousel.querySelectorAll('.project-card');
+            const dots = document.querySelectorAll('#individual-dots .dot');
+            
+            currentIndividualProject += direction;
+            
+            if (currentIndividualProject >= projects.length) {
+                currentIndividualProject = 0;
+            } else if (currentIndividualProject < 0) {
+                currentIndividualProject = projects.length - 1;
+            }
+            
+            showIndividualProject(currentIndividualProject);
+        }
+        
+        function goToIndividualProject(index) {
+            currentIndividualProject = index;
+            showIndividualProject(currentIndividualProject);
+        }
+        
+        function showIndividualProject(index) {
+            const individualCarousel = document.querySelector('.projects-carousel:not(#group-carousel)');
+            if (!individualCarousel) return;
+            
+            const projects = individualCarousel.querySelectorAll('.project-card');
+            const dots = document.querySelectorAll('#individual-dots .dot');
+            
+            // Hide all projects
+            projects.forEach(project => project.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current project
+            if (projects[index]) {
+                projects[index].classList.add('active');
+                console.log('Showing individual project:', index, projects[index]);
+            }
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+            
+            // Fallback: if no project is active, activate the first one
+            if (projects.length > 0 && !document.querySelector('.projects-carousel:not(#group-carousel) .project-card.active')) {
+                projects[0].classList.add('active');
+                if (dots[0]) dots[0].classList.add('active');
+                console.log('Fallback: Activated first individual project');
+            }
+        }
+        
+        // Group projects navigation
+        function changeGroupProject(direction) {
+            const groupCarousel = document.getElementById('group-carousel');
+            if (!groupCarousel) return;
+            
+            const projects = groupCarousel.querySelectorAll('.project-card');
+            const dots = document.querySelectorAll('#group-dots .dot');
+            
+            currentGroupProject += direction;
+            
+            if (currentGroupProject >= projects.length) {
+                currentGroupProject = 0;
+            } else if (currentGroupProject < 0) {
+                currentGroupProject = projects.length - 1;
+            }
+            
+            showGroupProject(currentGroupProject);
+        }
+        
+        function goToGroupProject(index) {
+            currentGroupProject = index;
+            showGroupProject(currentGroupProject);
+        }
+        
+        function showGroupProject(index) {
+            const groupCarousel = document.getElementById('group-carousel');
+            if (!groupCarousel) return;
+            
+            const projects = groupCarousel.querySelectorAll('.project-card');
+            const dots = document.querySelectorAll('#group-dots .dot');
+            
+            // Hide all projects
+            projects.forEach(project => project.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current project
+            if (projects[index]) {
+                projects[index].classList.add('active');
+                console.log('Showing group project:', index, projects[index]);
+            }
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+            
+            // Fallback: if no project is active, activate the first one
+            if (projects.length > 0 && !document.querySelector('#group-carousel .project-card.active')) {
+                projects[0].classList.add('active');
+                if (dots[0]) dots[0].classList.add('active');
+                console.log('Fallback: Activated first group project');
+            }
+        }
+        
+        // Auto-advance carousels
+        let autoAdvanceInterval1, autoAdvanceInterval2;
+        
+        function startAutoAdvance() {
+            // Clear any existing intervals
+            if (autoAdvanceInterval1) clearInterval(autoAdvanceInterval1);
+            if (autoAdvanceInterval2) clearInterval(autoAdvanceInterval2);
+            
+            // Start auto-advancing individual projects
+            autoAdvanceInterval1 = setInterval(() => {
+                changeProject(1);
+            }, 4000); // Change individual projects every 4 seconds
+            
+            // Start auto-advancing group projects
+            autoAdvanceInterval2 = setInterval(() => {
+                changeGroupProject(1);
+            }, 5000); // Change group projects every 5 seconds
+        }
+        
+        function stopAutoAdvance() {
+            if (autoAdvanceInterval1) clearInterval(autoAdvanceInterval1);
+            if (autoAdvanceInterval2) clearInterval(autoAdvanceInterval2);
+        }
+        
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+        
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchStartX - touchEndX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe left - next project
+                    changeProject(1);
+                } else {
+                    // Swipe right - previous project
+                    changeProject(-1);
+                }
+            }
+        }
+        
+        // Touch support for group projects
+        let touchStartXGroup = 0;
+        let touchEndXGroup = 0;
+        
+        function handleTouchStartGroup(e) {
+            touchStartXGroup = e.changedTouches[0].screenX;
+        }
+        
+        function handleTouchEndGroup(e) {
+            touchEndXGroup = e.changedTouches[0].screenX;
+            handleSwipeGroup();
+        }
+        
+        function handleSwipeGroup() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchStartXGroup - touchEndXGroup;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe left - next project
+                    changeGroupProject(1);
+                } else {
+                    // Swipe right - previous project
+                    changeGroupProject(-1);
+                }
+            }
+        }
+        
+        // Add touch event listeners to carousels
+        function addTouchSupport() {
+            // Individual projects carousel
+            const individualCarousel = document.querySelector('.projects-carousel:not(#group-carousel)');
+            if (individualCarousel) {
+                individualCarousel.addEventListener('touchstart', handleTouchStart, false);
+                individualCarousel.addEventListener('touchend', handleTouchEnd, false);
+            }
+            
+            // Group projects carousel
+            const groupCarousel = document.getElementById('group-carousel');
+            if (groupCarousel) {
+                groupCarousel.addEventListener('touchstart', handleTouchStartGroup, false);
+                groupCarousel.addEventListener('touchend', handleTouchEndGroup, false);
+            }
+        }
+        
+        // Test function to verify carousels work
+        function testCarousels() {
+            console.log('Testing carousels...');
+            console.log('Individual projects:', document.querySelectorAll('.projects-carousel:not(#group-carousel) .project-card').length);
+            console.log('Group projects:', document.querySelectorAll('#group-carousel .project-card').length);
+            
+            // Test individual projects navigation
+            setTimeout(() => changeProject(1), 1000);
+            setTimeout(() => changeProject(1), 2000);
+            setTimeout(() => changeProject(-1), 3000);
+            
+            // Test group projects navigation
+            setTimeout(() => changeGroupProject(1), 4000);
+            setTimeout(() => changeGroupProject(1), 5000);
+            setTimeout(() => changeGroupProject(-1), 6000);
+        }
+        
+        // Check if device is mobile
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+        
+        // Initialize carousels when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Small delay to ensure DOM is fully loaded
+            setTimeout(() => {
+                // Only initialize carousel functionality on mobile devices
+                if (isMobile()) {
+                    initializeCarousels();
+                    addTouchSupport();
+                    // Start auto-advancing carousels
+                    startAutoAdvance();
+                } else {
+                    // On desktop, just show all projects in grid layout
+                    const allProjects = document.querySelectorAll('.projects-carousel .project-card');
+                    allProjects.forEach(project => {
+                        project.classList.add('active');
+                    });
+                }
+            }, 100);
+        });
+        
+        // Re-initialize on window resize
+        window.addEventListener('resize', function() {
+            if (isMobile()) {
+                initializeCarousels();
+                addTouchSupport();
+                // Start auto-advancing carousels
+                startAutoAdvance();
+            } else {
+                // On desktop, show all projects
+                const allProjects = document.querySelectorAll('.projects-carousel .project-card');
+                allProjects.forEach(project => {
+                    project.classList.add('active');
+                });
+            }
         });
     </script>
 </body>
