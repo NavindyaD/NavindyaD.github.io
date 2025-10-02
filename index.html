@@ -770,7 +770,14 @@
             }
             
             .carousel-controls {
-                display: none !important;
+                display: flex !important;
+                position: relative;
+                top: auto;
+                transform: none;
+                width: 100%;
+                justify-content: center;
+                gap: 20px;
+                margin: 20px 0;
             }
             
             .carousel-dots {
@@ -779,10 +786,10 @@
             }
             
             .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 14px;
-                background: rgba(37, 99, 235, 0.9);
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+                background: var(--gradient);
                 color: white;
                 border: none;
                 border-radius: 50%;
@@ -794,6 +801,7 @@
                 pointer-events: all;
                 box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
                 z-index: 10;
+                margin: 0 10px;
             }
             
             .carousel-btn:hover {
@@ -1731,23 +1739,12 @@
             }
         }
         
-        // Auto-advance carousels
+        // Manual navigation only - no auto-advance
         let autoAdvanceInterval1, autoAdvanceInterval2;
         
         function startAutoAdvance() {
-            // Clear any existing intervals
-            if (autoAdvanceInterval1) clearInterval(autoAdvanceInterval1);
-            if (autoAdvanceInterval2) clearInterval(autoAdvanceInterval2);
-            
-            // Start auto-advancing individual projects
-            autoAdvanceInterval1 = setInterval(() => {
-                changeProject(1);
-            }, 4000); // Change individual projects every 4 seconds
-            
-            // Start auto-advancing group projects
-            autoAdvanceInterval2 = setInterval(() => {
-                changeGroupProject(1);
-            }, 5000); // Change group projects every 5 seconds
+            // Auto-advance disabled for mobile - manual navigation only
+            return;
         }
         
         function stopAutoAdvance() {
@@ -1858,8 +1855,7 @@
                 if (isMobile()) {
                     initializeCarousels();
                     addTouchSupport();
-                    // Start auto-advancing carousels
-                    startAutoAdvance();
+                    // Manual navigation only - no auto-advance
                 } else {
                     // On desktop, just show all projects in grid layout
                     const allProjects = document.querySelectorAll('.projects-carousel .project-card');
@@ -1875,8 +1871,7 @@
             if (isMobile()) {
                 initializeCarousels();
                 addTouchSupport();
-                // Start auto-advancing carousels
-                startAutoAdvance();
+                // Manual navigation only - no auto-advance
             } else {
                 // On desktop, show all projects
                 const allProjects = document.querySelectorAll('.projects-carousel .project-card');
